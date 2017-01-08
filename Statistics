@@ -1,0 +1,60 @@
+public class Statistics {
+
+    private int time;
+    private int moves;
+    private int isWin;
+
+    public Statistics(){
+
+        moves = 0;
+        isWin = 0;
+    }
+
+    public String displayTime(){
+        time = Gameboard.time;
+        String sTime;
+        int hrCount = 0;
+        int minCount = 0;
+
+        while(time >= 3600){
+            time -= 3600;
+            hrCount++;
+        }
+        while(time >= 60){
+            time -= 60;
+            minCount++;
+        }
+
+        sTime = String.valueOf(hrCount) + " : " + String.valueOf(minCount) + " : " + String.valueOf(time);
+
+        return sTime;
+
+    }
+
+    public void addMove(){
+        moves++;
+    }
+
+    public String getMoves(){
+        return String.valueOf(moves);
+    }
+
+    public void setIsWin(boolean Win) {
+        time = Gameboard.time;
+        if(Win){
+            isWin = moves * time;
+        }else {
+            isWin = (int)(moves * time * 0.5);
+        }
+
+    }
+
+    public String getIsWin(boolean win){
+
+        setIsWin(win);
+
+        return String.valueOf(isWin);
+
+    }
+
+}
